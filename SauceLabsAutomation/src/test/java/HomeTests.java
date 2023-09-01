@@ -21,7 +21,7 @@ public class HomeTests extends BaseTest {
         Assertions.assertTrue(homePage.isDesplayedCartBadge());
     }
     @Test
-    public void enterAProduct()throws  InterruptedException{
+    public void enterAProductAddItAndVerifyIt()throws  InterruptedException{
         LoginPage loginPage = new LoginPage(DriverManager.getDriver().driver);
         loginPage.setUserNameTextBox("standard_user");
         loginPage.setPasswordTextBox("secret_sauce");
@@ -31,6 +31,10 @@ public class HomeTests extends BaseTest {
         homePage.click("Sauce Labs Fleece Jacket");
         Thread.sleep(5000);
         Assertions.assertTrue(homePage.isDisplayedBackToproducts());
+        homePage.addProductToCart("Sauce Labs Fleece Jacket");
+        homePage.backToProductsClick();
+        List<String> estado = homePage.btnInventoryS();
+        Assertions.assertFalse(homePage.verifyReset(estado));
     }
     @Test
     public void removeProductsFromCart() throws InterruptedException {

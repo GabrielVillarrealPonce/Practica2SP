@@ -25,7 +25,7 @@ public class CheckoutViewTests extends BaseTest {
         homePage.removeProductFromCart(nombre);
         Thread.sleep(5000);
         view.BacktoProducts ();
-        homePage.DiffNumber(numeror);
+        Assertions.assertTrue(homePage.DiffNumber(numeror));
         Thread.sleep(5000);
 
     }

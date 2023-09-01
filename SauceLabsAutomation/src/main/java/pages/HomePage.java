@@ -19,7 +19,7 @@ public class HomePage {
     WebDriver driver;
     @FindBy(className = "btn_inventory")
     List<WebElement> btninventory;
-    @FindBy(className = "shopping_cart_badge")
+    @FindBy(className = "shopping_cart_link")
     WebElement cartNumber;
     @FindBy(className = "app_logo")
     WebElement pageTitle;
@@ -59,6 +59,7 @@ public class HomePage {
         }
     }
     public boolean isDisplayedBackToproducts(){return backtoProducts.isDisplayed();}
+    public void backToProductsClick(){backtoProducts.click();}
     public boolean isDesplayedCartBadge(){
         return cartNumber.isDisplayed();
     }
