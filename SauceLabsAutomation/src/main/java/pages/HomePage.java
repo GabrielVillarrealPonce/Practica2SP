@@ -34,7 +34,8 @@ public class HomePage {
     WebElement burgerButton;
     @FindBy(className = "inventory_details_price")
     WebElement productPrice;
-
+    @FindBy(id = "back-to-products")
+    WebElement backtoProducts;
     public HomePage(WebDriver driver){
         this.driver = driver;
         PageFactory.initElements(driver, this);
@@ -47,6 +48,17 @@ public class HomePage {
         }
         return estado;
     }
+    public void click(String nombreP){
+        List<WebElement> elements = driver.findElements(By.className("inventory_item_name"));
+        for( WebElement element: elements){
+            System.out.println(element.getText());
+            if(element.getText().equalsIgnoreCase(nombreP)){
+                element.click();
+                break;
+            }
+        }
+    }
+    public boolean isDisplayedBackToproducts(){return backtoProducts.isDisplayed();}
     public boolean isDesplayedCartBadge(){
         return cartNumber.isDisplayed();
     }

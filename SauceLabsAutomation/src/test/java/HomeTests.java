@@ -21,6 +21,18 @@ public class HomeTests extends BaseTest {
         Assertions.assertTrue(homePage.isDesplayedCartBadge());
     }
     @Test
+    public void enterAProduct()throws  InterruptedException{
+        LoginPage loginPage = new LoginPage(DriverManager.getDriver().driver);
+        loginPage.setUserNameTextBox("standard_user");
+        loginPage.setPasswordTextBox("secret_sauce");
+        loginPage.clickOnLoginButton();
+
+        HomePage homePage = new HomePage(DriverManager.getDriver().driver);
+        homePage.click("Sauce Labs Fleece Jacket");
+        Thread.sleep(5000);
+        Assertions.assertTrue(homePage.isDisplayedBackToproducts());
+    }
+    @Test
     public void removeProductsFromCart() throws InterruptedException {
         LoginPage loginPage = new LoginPage(DriverManager.getDriver().driver);
         loginPage.setUserNameTextBox("standard_user");
